@@ -1,0 +1,113 @@
+{
+  "project_info": {
+    "project_number": "574398718332",
+    "firebase_url": "https://wireup-b0702.firebaseio.com",
+    "project_id": "wireup-b0702",
+    "storage_bucket": "wireup-b0702.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574398718332:android:ba020500a0e93c39",
+        "android_client_info": {
+          "package_name": "com.wireupfinland.wireup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574398718332-83ofcetujesl9rb21ajl4klf2cf328d8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wireupfinland.wireup",
+            "certificate_hash": "91a70c47327595e333ffc4f4ef1331a6a25f06fc"
+          }
+        },
+        {
+          "client_id": "574398718332-bfkmdt0erg7mi945d7i77hsktaoi5de7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN0Heb1m8cuHW7M3Y5DAFTvIJ3UN8Z9ec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574398718332-hfe56csgsli4nseb0jnnu6fctk27atlb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oscar.WireUp"
+              }
+            },
+            {
+              "client_id": "574398718332-bfkmdt0erg7mi945d7i77hsktaoi5de7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574398718332:android:b751b19584c9b9da",
+        "android_client_info": {
+          "package_name": "com.wireupfinland.wireup_test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "574398718332-0r9qp68a1rp1i868bbl02pddncnna7f3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wireupfinland.wireup_test",
+            "certificate_hash": "d45ff73e45fc7120d5c13485d729476e039bfa6e"
+          }
+        },
+        {
+          "client_id": "574398718332-bfkmdt0erg7mi945d7i77hsktaoi5de7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN0Heb1m8cuHW7M3Y5DAFTvIJ3UN8Z9ec"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "574398718332-hfe56csgsli4nseb0jnnu6fctk27atlb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.oscar.WireUp"
+              }
+            },
+            {
+              "client_id": "574398718332-bfkmdt0erg7mi945d7i77hsktaoi5de7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
