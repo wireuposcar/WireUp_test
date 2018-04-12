@@ -3,4 +3,10 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="set_project_button">Create</string>
+    /strings used in setProject activity
+    <string name="set_subject">Subject</string>
+    <string name="set_project_name">Add a name to your project</string>
+    <string name="set_project_end_date">Choose an end date for the project</string>
+    <string name="add_people">Add people to project</string>
 </resources>

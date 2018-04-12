@@ -21,12 +21,14 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) { //
-                Intent project = new Intent(view.getContext(), SetProject.class);
-                startActivity(project);
+                startSetProject();
             }
         });
     }
-
+    private void startSetProject() {
+        Intent project = new Intent(this, SetProject.class);
+        startActivity(project);
+    }
     private void DisplayProject(){
         //TODO
     }
