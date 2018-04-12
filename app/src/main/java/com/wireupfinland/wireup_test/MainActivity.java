@@ -30,6 +30,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(project);
     }
     private void DisplayProject(){
-        //TODO
+        //TODO fetch projects from database
     }
 }

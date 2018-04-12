@@ -11,5 +11,5 @@ public class SetProject extends AppCompatActivity {
         setContentView(R.layout.activity_set_project);
     }
 
-
+  //TODO functionality to register new project in the database
 }
