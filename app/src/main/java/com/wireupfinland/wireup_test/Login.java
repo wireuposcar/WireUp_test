@@ -1,5 +1,6 @@
 package com.wireupfinland.wireup_test;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -92,6 +93,8 @@ public class Login extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(Login.this, "Signed in", Toast.LENGTH_LONG)
                                                 .show();
+                                        startMainActivity();
+
                                     }
                                 }
                             });
@@ -100,7 +103,10 @@ public class Login extends AppCompatActivity {
         });
 
     }
-
+    public void startMainActivity() {
+        Intent main = new Intent(this, MainActivity.class);
+        startActivity(main);
+    }
     @Override
     protected void onStart() {
         super.onStart();
