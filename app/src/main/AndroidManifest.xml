@@ -20,7 +20,8 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SetProject"></activity>
+        <activity android:name=".SetProject" />
+        <activity android:name=".Project"></activity>
     </application>
 
 </manifest>
