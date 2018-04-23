@@ -12,17 +12,17 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int loginListener = 0;
+        boolean loginListener = false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if(loginListener == 0) {
+        if(!loginListener) {
 
             Intent login = new Intent(this, Login.class);
             startActivity(login);
-            loginListener ++;
+            loginListener = true;
         }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newProject);
         fab.setOnClickListener(new View.OnClickListener() {
