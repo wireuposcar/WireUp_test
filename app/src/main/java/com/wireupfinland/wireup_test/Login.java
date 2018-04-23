@@ -93,7 +93,7 @@ public class Login extends AppCompatActivity {
                                     } else {
                                         Toast.makeText(Login.this, "Signed in", Toast.LENGTH_LONG)
                                                 .show();
-                                        startMainActivity();
+                                        finish();
 
                                     }
                                 }
@@ -105,6 +105,7 @@ public class Login extends AppCompatActivity {
     }
     public void startMainActivity() {
         Intent main = new Intent(this, MainActivity.class);
+        finish();
         startActivity(main);
     }
     @Override

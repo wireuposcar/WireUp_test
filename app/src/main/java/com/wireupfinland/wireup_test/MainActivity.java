@@ -12,11 +12,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int loginListener = 0;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        if(loginListener == 0) {
+
+            Intent login = new Intent(this, Login.class);
+            startActivity(login);
+            loginListener ++;
+        }
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.newProject);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(project);
     }
     private void DisplayProject(){
-        //TODO fetch projects from database
+        //TODO fetch and display projects from database
     }
 }
