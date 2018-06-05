@@ -2,6 +2,9 @@ package com.wireupfinland.wireup_test;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.EditText;
+
+import com.google.firebase.internal.api.FirebaseNoSignedInUserException;
 
 public class SetProject extends AppCompatActivity {
 
@@ -11,5 +14,9 @@ public class SetProject extends AppCompatActivity {
         setContentView(R.layout.activity_set_project);
     }
 
+    private void getData(){
+        EditText edit1 = (EditText) findViewById(R.id.activity_setr_project);
+        edit1.
+    }
   //TODO functionality to register new project in the database
 }
