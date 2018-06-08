@@ -51,54 +51,18 @@ public class CreateAccount extends AppCompatActivity {
         createAccountBtn = (Button) findViewById(R.id.createAccountAct);
 
 
-        createAccountBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public  void onClick(View v) {
-                createNewAccount();
-            }
-        });
     }
 
-    private void createNewAccount() {
+    public void createNewAccount(View view) {
         String name = fullname.getText().toString().trim();
         String em = email.getText().toString().trim();
         String pwd = password.getText().toString();
         String sch = school.getText().toString().trim();
         final String schCode = schoolCode.getText().toString().trim();
 
-        if (!TextUtils.isEmpty(name) && !TextUtils.isEmpty(em) && !TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(sch) && !TextUtils.isEmpty(schCode)) {
-
-            mProgressDialog.setMessage("Creating Account...");
-            mProgressDialog.show();
-
-
-            mAuth.createUserWithEmailAndPassword(em, pwd)
-                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                        @Override
-                        public void onSuccess(AuthResult authResult) {
-                            if (authResult != null) {
-
-                                String userid = mAuth.getCurrentUser().getUid();
-                                DatabaseReference currentUserDb = mDatabaseReference.child(userid);
-                                currentUserDb.child("firstName").setValue(fullname);
-                                currentUserDb.child("email").setValue(email);
-                                currentUserDb.child("schoolCode").setValue(schoolCode);
-                                currentUserDb.child("schoolName").setValue(school);
-
-                                mProgressDialog.dismiss();
-
-                                //send users to project overview
-
-                                Intent intent = new Intent(CreateAccount.this, MainActivity.class);
-                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(intent);
-                            }
-                        }
-                    });
-
-        }
     }
 }
+
 
 
 
