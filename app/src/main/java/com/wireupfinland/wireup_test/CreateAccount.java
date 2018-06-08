@@ -15,7 +15,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class activity_CreateAccount extends AppCompatActivity {
+public class CreateAccount extends AppCompatActivity {
 
 
     private EditText fullname;
@@ -89,7 +89,7 @@ public class activity_CreateAccount extends AppCompatActivity {
 
                                 //send users to project overview
 
-                                Intent intent = new Intent(activity_CreateAccount.this, MainActivity.class);
+                                Intent intent = new Intent(CreateAccount.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
                             }

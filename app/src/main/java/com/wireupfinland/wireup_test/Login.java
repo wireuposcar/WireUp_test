@@ -55,7 +55,6 @@ public class Login extends AppCompatActivity {
 
             //@Override
             //public void onCancelled(DatabaseError databaseError) {
-33r3rr3r333r3r3r3r3r3r3
             //}
         //});
 
@@ -74,35 +73,31 @@ public class Login extends AppCompatActivity {
                 }
             }
         };
-
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String emailString = email.getText().toString();
-                String pwd = password.getText().toString();
-
-                if (!emailString.equals("") && !pwd.equals("")) {
-                    mAuth.signInWithEmailAndPassword(emailString, pwd)
-                            .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-
-                                    if (!task.isSuccessful()) {
-                                        Toast.makeText(Login.this, "Faild to sign in", Toast.LENGTH_LONG)
-                                                .show();
-                                    } else {
-                                        Toast.makeText(Login.this, "Signed in", Toast.LENGTH_LONG)
-                                                .show();
-                                        finish();
-
-                                    }
-                                }
-                            });
-                }
-            }
-        });
-
     }
+    public void authLogin(){
+        String emailString = email.getText().toString();
+        String pwd = password.getText().toString();
+
+        if (!emailString.equals("") && !pwd.equals("")) {
+            mAuth.signInWithEmailAndPassword(emailString, pwd)
+                    .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(Login.this, "Faild to sign in", Toast.LENGTH_LONG)
+                                        .show();
+                            } else {
+                                Toast.makeText(Login.this, "Signed in", Toast.LENGTH_LONG)
+                                        .show();
+                                finish();
+
+                            }
+                        }
+                    });
+        }
+    }
+
     public void startMainActivity() {
         Intent main = new Intent(this, MainActivity.class);
         finish();
