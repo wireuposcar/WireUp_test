@@ -22,7 +22,7 @@ public class Chat extends AppCompatActivity {
             public void onClick(View view) {
                 EditText input = (EditText) findViewById(R.id.input);
                 //read input field and push new instance
-                // chatmessage to the firbase database
+                // chatmessage to the firebase database
                 FirebaseDatabase.getInstance()
                         .getReference()
                         .push()

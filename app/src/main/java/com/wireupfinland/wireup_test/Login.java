@@ -55,7 +55,6 @@ public class Login extends AppCompatActivity {
 
             //@Override
             //public void onCancelled(DatabaseError databaseError) {
-33r3rr3r333r3r3r3r3r3r3
             //}
         //});
 
