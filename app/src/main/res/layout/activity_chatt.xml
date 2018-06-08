@@ -10,38 +10,90 @@
         android:layout_height="match_parent"
         android:fillViewport="true"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="0dp"
+        tools:ignore="MissingConstraints">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:id="@+id/fab"
+                android:tint="@android:color/white"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                />
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"/>
-
-            <EditText
-                android:id="@+id/input"
+            <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@id/fab"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_gravity="bottom"
-                android:hint="Input" />
+                android:layout_alignParentStart="true"/>
 
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Input"
+                android:id="@+id/input"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:id="@+id/message_user"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/message_user"
+                android:layout_alignParentEnd="true"
+                android:id="@+id/message_time" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/message_user"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
+                android:id="@+id/message_text"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="18sp" />
+                 />
             <Button
                 android:id="@+id/Send"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
-                android:layout_gravity="bottom|right"
+                android:layout_gravity="top|left"
                 android:clickable="true"
                 android:text="Send"
                 android:visibility="visible" />
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_above="@id/fab"
+            android:dividerHeight="16dp"
+            android:divider="@android:color/transparent"
+            android:id="@+id/list_of_messages"
+            android:layout_marginBottom="16dp"/>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.constraint.ConstraintLayout>

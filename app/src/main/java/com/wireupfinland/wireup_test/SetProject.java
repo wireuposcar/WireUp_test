@@ -15,8 +15,7 @@ public class SetProject extends AppCompatActivity {
     }
 
     private void getData(){
-        EditText edit1 = (EditText) findViewById(R.id.activity_setr_project);
-        edit1.
+        EditText edit1 = (EditText) findViewById(R.layout.activity_set_project);
     }
   //TODO functionality to register new project in the database
 }
