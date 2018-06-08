@@ -55,7 +55,6 @@ public class Login extends AppCompatActivity {
 
             //@Override
             //public void onCancelled(DatabaseError databaseError) {
-
             //}
         //});
 
