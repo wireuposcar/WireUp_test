@@ -23,7 +23,6 @@
         <activity android:name=".SetProject" />
         <activity android:name=".Project" />
         <activity android:name=".activity_CreateAccount" />
-
     </application>
 
 </manifest>
