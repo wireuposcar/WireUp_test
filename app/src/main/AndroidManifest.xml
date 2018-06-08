@@ -3,7 +3,7 @@
     package="com.wireupfinland.wireup_test">
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="WireUp"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -20,9 +20,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login" />
+        <activity android:name=".Main" />
         <activity android:name=".SetProject" />
         <activity android:name=".Project" />
         <activity android:name=".CreateAccount" />
+        <activity android:name=".Chat" />
     </application>
 
 </manifest>

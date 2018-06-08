@@ -15,30 +15,6 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatt);
 
-        FloatingActionButton fab =
-                (FloatingActionButton)findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                EditText input = (EditText) findViewById(R.id.input);
-                //read input field and push new instance
-                // chatmessage to the firebase database
-                FirebaseDatabase.getInstance()
-                        .getReference()
-                        .push()
-                        .setValue(new ChatMessage(input.getText().toString(),
-                                FirebaseAuth.getInstance()
-                                        .getCurrentUser()
-                                        .getDisplayName())
-                        );
-                //clear input
-                input.setText("");
-            }
-        });
+    }
 
-        }
-
-        }
-
-
-
+}
