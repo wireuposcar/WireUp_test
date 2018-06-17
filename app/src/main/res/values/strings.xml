@@ -9,4 +9,7 @@
     <string name="set_project_name">Add a name to your project</string>
     <string name="set_project_end_date">Choose an end date for the project</string>
     <string name="add_people">Add people to project</string>
+    <string name="fullname">Full Name</string>
+    <string name="school">Your School</string>
+    <string name="schoolcode">School Code</string>
 </resources>
