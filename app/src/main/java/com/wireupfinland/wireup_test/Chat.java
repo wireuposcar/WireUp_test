@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,16 +16,20 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Chat extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
+
     @Override
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatt);
 
-        FloatingActionButton fab =
-                (FloatingActionButton)findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        Button send =
+                (Button) findViewById(R.id.send);
+        send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                displayChatMessages();
                 EditText input = (EditText) findViewById(R.id.input);
                 //read input field and push new instance
                 // chatmessage to the firebase database
@@ -44,7 +49,7 @@ public class Chat extends AppCompatActivity {
         }
 
     private void displayChatMessages() {
-        ListView listOfMessages = (ListView)findViewById(R.id.fab);
+        ListView listOfMessages = (ListView)findViewById(R.id.list_of_messages);
 
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
                 R.layout.activity_chatt, FirebaseDatabase.getInstance().getReference()) {

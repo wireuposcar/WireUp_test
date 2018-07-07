@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -18,35 +19,41 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:id="@+id/fab"
-                android:tint="@android:color/white"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/input"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/send"
+                    android:layout_width="20dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    android:text="Send" />
+            </LinearLayout>
+
             <android.support.design.widget.TextInputLayout
+                android:id="@id/input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentStart="true"/>
+
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/fab"
                 android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"/>
-
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Input"
-                android:id="@+id/input"
-                />
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,28 +79,18 @@
                 android:id="@+id/message_text"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="18sp" />
-                 />
-            <Button
-                android:id="@+id/Send"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity="top|left"
-                android:clickable="true"
-                android:text="Send"
-                android:visibility="visible" />
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentStart="true"
-            android:layout_above="@id/fab"
-            android:dividerHeight="16dp"
-            android:divider="@android:color/transparent"
-            android:id="@+id/list_of_messages"
-            android:layout_marginBottom="16dp"/>
+
+            <ListView
+                android:id="@+id/list_of_messages"
+                android:layout_width="match_parent"
+                android:layout_height="463dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="16dp" >
+
+            </ListView>
         </RelativeLayout>
     </android.support.v4.widget.NestedScrollView>
 </android.support.constraint.ConstraintLayout>
