@@ -51,14 +51,53 @@ public class CreateAccount extends AppCompatActivity {
         createAccountBtn = (Button) findViewById(R.id.createAccountAct);
 
 
+        createAccountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                createNewAccount();
+            }
+        });
+
+
     }
 
-    public void createNewAccount(View view) {
-        String name = fullname.getText().toString().trim();
-        String em = email.getText().toString().trim();
-        String pwd = password.getText().toString();
-        String sch = school.getText().toString().trim();
+    public void createNewAccount() {
+        final String name = fullname.getText().toString().trim();
+        final String em = email.getText().toString().trim();
+        final String pwd = password.getText().toString();
+        final String sch = school.getText().toString().trim();
         final String schCode = schoolCode.getText().toString().trim();
+
+        if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(em) && !TextUtils.isEmpty(pwd) && !TextUtils.isEmpty(sch) && !TextUtils.isEmpty(schCode)) {
+            mProgressDialog.setMessage("Creating account....");
+            mProgressDialog.show();
+
+            mAuth.createUserWithEmailAndPassword(em, pwd)
+                    .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                        @Override
+                        public void onSuccess(AuthResult authResult) {
+                            if (authResult != null) {
+
+                                String userid = mAuth.getCurrentUser().getUid();
+                                DatabaseReference currentUserDb = mDatabaseReference.child(userid);
+                                currentUserDb.child("firstName").setValue(name);
+                                currentUserDb.child("email").setValue(em);
+                                currentUserDb.child("schoolCode").setValue(schCode);
+                                currentUserDb.child("schoolName").setValue(sch);
+
+                                mProgressDialog.dismiss();
+
+                                //log in users
+
+                                Intent intent = new Intent(CreateAccount.this, Main.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+
+
+                            }
+                        }
+                    });
+        }
 
     }
 }
