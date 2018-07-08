@@ -42,7 +42,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         holder.subject.setText(dataService.subject);
         holder.projectName.setText(dataService.projectName);
         holder.endDate.setText(dataService.endDate);
-        holder.peopleAdded.setText(dataService.people);
+        holder.peopleAdded.setText(dataService.members);
 
 
         //TODO format date

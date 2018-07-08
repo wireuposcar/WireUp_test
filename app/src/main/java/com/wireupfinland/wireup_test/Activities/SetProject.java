@@ -48,7 +48,7 @@ public class SetProject extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         //mDatabaseReference = mDatabase.getReference().child("AndroidTest"); //change reference child
-        mPostDatabse = FirebaseDatabase.getInstance().getReference().child("AndroidTest");
+        mPostDatabse = FirebaseDatabase.getInstance().getReference().child("groups").push();
 
 
 
@@ -67,13 +67,13 @@ public class SetProject extends AppCompatActivity {
         final String subj = subject.getText().toString().trim();
         final String projectNm = projectName.getText().toString().trim();
         final String endDt = endDate.getText().toString();
-        final String people = addPeople.getText().toString();
+        final String members = addPeople.getText().toString();
 
-        if (!TextUtils.isEmpty(subj) && !TextUtils.isEmpty(projectNm) && !TextUtils.isEmpty(endDt) && !TextUtils.isEmpty(people)) {
+        if (!TextUtils.isEmpty(subj) && !TextUtils.isEmpty(projectNm) && !TextUtils.isEmpty(endDt) && !TextUtils.isEmpty(members)) {
             mProgressDialog.setMessage("Creating new project...");
             mProgressDialog.show();
 
-            DataService dataService = new DataService("subject", "projectName", "endDate", "people", "test");
+            DataService dataService = new DataService(subj, projectNm, endDt, members, "", "", "", "", "");
 
             mPostDatabse.setValue(dataService).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
