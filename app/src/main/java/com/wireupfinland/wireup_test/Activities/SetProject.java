@@ -8,17 +8,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.wireupfinland.wireup_test.R;
+import com.wireupfinland.wireup_test.Services.DataService;
 
 public class SetProject extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
-    private DatabaseReference mDatabaseReference;
+    private DatabaseReference mPostDatabse;
     private FirebaseDatabase mDatabase;
     private FirebaseUser mUser;
     private FirebaseAuth mAuth;
@@ -44,8 +47,9 @@ public class SetProject extends AppCompatActivity {
         mDatabase = FirebaseDatabase.getInstance();
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
-        mDatabaseReference = mDatabase.getReference().child("AndroidTest"); //change reference child
-        mDatabaseReference.keepSynced(true);
+        //mDatabaseReference = mDatabase.getReference().child("AndroidTest"); //change reference child
+        mPostDatabse = FirebaseDatabase.getInstance().getReference().child("AndroidTest");
+
 
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +72,16 @@ public class SetProject extends AppCompatActivity {
         if (!TextUtils.isEmpty(subj) && !TextUtils.isEmpty(projectNm) && !TextUtils.isEmpty(endDt) && !TextUtils.isEmpty(people)) {
             mProgressDialog.setMessage("Creating new project...");
             mProgressDialog.show();
+
+            DataService dataService = new DataService("subject", "projectName", "endDate", "people", "test");
+
+            mPostDatabse.setValue(dataService).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Toast.makeText(getApplicationContext(), "Group created", Toast.LENGTH_LONG).show();
+                    mProgressDialog.dismiss();
+                }
+            });
 
         }
 
