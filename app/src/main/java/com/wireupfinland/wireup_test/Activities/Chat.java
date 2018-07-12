@@ -1,7 +1,6 @@
-package com.wireupfinland.wireup_test;
+package com.wireupfinland.wireup_test.Activities;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.view.View;
@@ -13,6 +12,7 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
+import com.wireupfinland.wireup_test.R;
 
 public class Chat extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;

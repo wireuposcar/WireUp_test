@@ -1,4 +1,4 @@
-package com.wireupfinland.wireup_test;
+package com.wireupfinland.wireup_test.Activities;
 
 import java.util.Date;
 
