@@ -119,6 +119,5 @@ public class SetProject extends AppCompatActivity {
         finish();
 
     }
-  //TODO functionality to register new project in the database
 
 }
