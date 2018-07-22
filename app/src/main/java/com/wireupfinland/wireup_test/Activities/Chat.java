@@ -24,8 +24,7 @@ public class Chat extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatt);
 
-        Button send =
-                (Button) findViewById(R.id.send);
+        Button send =(Button) findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

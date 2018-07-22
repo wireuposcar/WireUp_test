@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,6 +26,7 @@ public class Main extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerAdapter recyclerAdapter;
     private List<DataService> grouplist;
+    private Button project;
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mDatabaseReference;
@@ -52,9 +54,10 @@ public class Main extends AppCompatActivity {
 
         newProject = (FloatingActionButton) findViewById(R.id.createNewProjectBtn);
         chat = (FloatingActionButton) findViewById(R.id.logoutBtn);
+        project = (Button) findViewById(R.id.project);
         startChat();
         startSetProject();
-
+        startDisplayProject();
     }
 
 
@@ -71,8 +74,14 @@ public class Main extends AppCompatActivity {
     }
 
     private void startDisplayProject() {
-
-        //TODO fetch and display projects from database
+        project.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Project.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
 
     private void startChat() {

@@ -35,6 +35,7 @@ public class SetProject extends AppCompatActivity {
     private Button create;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,13 +109,14 @@ public class SetProject extends AppCompatActivity {
             //});
 
         }
+        startMainActivity();
 
     }
-
 
     public void startMainActivity(){
         Intent main = new Intent(this, Main.class);
         startActivity(main);
+        finish();
 
     }
   //TODO functionality to register new project in the database
