@@ -30,15 +30,10 @@
         android:layout_height="wrap_content"
         android:clickable="true" />
 
-    <Button
-        android:id="@+id/project"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="76dp"
-        android:text="Project" />
-
+        android:layout_height="match_parent" />
 
 
 </android.support.design.widget.CoordinatorLayout>

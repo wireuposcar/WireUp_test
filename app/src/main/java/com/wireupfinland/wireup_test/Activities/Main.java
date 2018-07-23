@@ -2,8 +2,11 @@ package com.wireupfinland.wireup_test.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,12 +14,16 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.wireupfinland.wireup_test.DataService.RecyclerAdapter;
 import com.wireupfinland.wireup_test.R;
 import com.wireupfinland.wireup_test.Services.DataService;
 
+import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,14 +57,14 @@ public class Main extends AppCompatActivity {
 
         grouplist = new ArrayList<>();
 
-        //recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         newProject = (FloatingActionButton) findViewById(R.id.createNewProjectBtn);
         chat = (FloatingActionButton) findViewById(R.id.logoutBtn);
-        project = (Button) findViewById(R.id.project);
         startChat();
         startSetProject();
-        startDisplayProject();
     }
 
 
@@ -97,7 +104,45 @@ public class Main extends AppCompatActivity {
         });
     }
 
-   // @Override
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        mDatabaseReference.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                DataService groupData = dataSnapshot.getValue(DataService.class);
+
+                grouplist.add(groupData);
+
+                recyclerAdapter = new RecyclerAdapter(Main.this, grouplist);
+                recyclerView.setAdapter(recyclerAdapter);
+                recyclerAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    // @Override
     //public boolean onOptionsItemSelected(MenuItem item) {
       //  switch (item.getItemId()) {
         //    case R.id.createNewProjectBtn:
