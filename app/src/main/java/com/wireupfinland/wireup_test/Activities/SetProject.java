@@ -18,6 +18,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.wireupfinland.wireup_test.R;
 import com.wireupfinland.wireup_test.Services.DataService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class SetProject extends AppCompatActivity {
 
     private ProgressDialog mProgressDialog;
@@ -30,6 +33,7 @@ public class SetProject extends AppCompatActivity {
     private EditText endDate;
     private EditText addPeople;
     private Button create;
+
 
 
     @Override
@@ -48,8 +52,7 @@ public class SetProject extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mUser = mAuth.getCurrentUser();
         //mDatabaseReference = mDatabase.getReference().child("AndroidTest"); //change reference child
-        mPostDatabse = FirebaseDatabase.getInstance().getReference().child("groups").push();
-
+        mPostDatabse = FirebaseDatabase.getInstance().getReference().child("groups");
 
 
         create.setOnClickListener(new View.OnClickListener() {
@@ -73,26 +76,48 @@ public class SetProject extends AppCompatActivity {
             mProgressDialog.setMessage("Creating new project...");
             mProgressDialog.show();
 
-            DataService dataService = new DataService(subj, projectNm, endDt, members, "", "", "", "", "");
+            DatabaseReference createNewProject = mPostDatabse.push();
 
-            mPostDatabse.setValue(dataService).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Toast.makeText(getApplicationContext(), "Group created", Toast.LENGTH_LONG).show();
-                    mProgressDialog.dismiss();
-                }
-            });
+            Map<String, String> dataToSave = new HashMap<>();
+            dataToSave.put("subject", subj);
+            dataToSave.put("projectName", projectNm);
+            dataToSave.put("endDate", endDt);
+            dataToSave.put("members", members);
+            dataToSave.put("userid", mUser.getUid());
+            dataToSave.put("creationDate", String.valueOf(java.lang.System.currentTimeMillis()));
+            dataToSave.put("dropbox", "");
+            dataToSave.put("evernote", "");
+            dataToSave.put("googleDocs", "");
+
+
+            createNewProject.setValue(dataToSave);
+
+            mProgressDialog.dismiss();
+
+            startActivity(new Intent(SetProject.this, Main.class));
+
+            //TODO dissable create account button and cleare all fields and enable button
+
+
+            //DataService dataService = new DataService(subj, projectNm, endDt, members, "", "", "", "", "");
+
+            //mPostDatabse.setValue(dataService).addOnSuccessListener(new OnSuccessListener<Void>() {
+               // @Override
+              //  public void onSuccess(Void aVoid) {
+                //    Toast.makeText(getApplicationContext(), "Group created", Toast.LENGTH_LONG).show();
+                //}
+            //});
 
         }
+        startMainActivity();
 
     }
-
 
     public void startMainActivity(){
         Intent main = new Intent(this, Main.class);
         startActivity(main);
+        finish();
 
     }
-  //TODO functionality to register new project in the database
 
 }

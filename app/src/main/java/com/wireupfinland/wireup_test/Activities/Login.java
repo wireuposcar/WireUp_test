@@ -88,7 +88,7 @@ public class Login extends AppCompatActivity {
         main.putExtra("User", mAuth.getCurrentUser());
         startActivity(main);
     }
-/*
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -103,5 +103,5 @@ public class Login extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-*/
+
 }
