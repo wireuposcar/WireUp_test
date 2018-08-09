@@ -3,6 +3,7 @@ package com.wireupfinland.wireup_test.Activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,12 +18,15 @@ import com.wireupfinland.wireup_test.R;
 public class Chat extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
 
+    private static final String TAG = "Chat";
+
     @Override
-
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chatt);
+
+        Log.d(TAG, "chat started");
+
 
         Button send =(Button) findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
@@ -48,7 +52,7 @@ public class Chat extends AppCompatActivity {
         }
 
     private void displayChatMessages() {
-        ListView listOfMessages = (ListView)findViewById(R.id.list_of_messages);
+        ListView listOfMessages = (ListView)findViewById(R.id.messageView);
 
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class,
                 R.layout.activity_chatt, FirebaseDatabase.getInstance().getReference()) {

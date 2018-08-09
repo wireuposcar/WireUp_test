@@ -6,26 +6,28 @@
     android:layout_margin="5dp">
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/parentLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/projectSubject"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
             android:padding="10dp"
             android:text="Subject"
             android:textColor="@color/wireup_blue"
-            android:id="@+id/projectSubject"/>
+            android:textSize="18dp" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:id="@+id/projectName"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:paddingRight="10dp"
+            android:padding="10dp"
             android:text="Name"
             android:textColor="@color/wireup_blue"
-            android:id="@+id/projectName"/>
+            android:textSize="18dp" />
 
     </LinearLayout>
 

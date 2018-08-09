@@ -50,7 +50,7 @@ public class Login extends AppCompatActivity {
                 if (user != null) {
                     //user is signed in
                     Log.d(TAG, "user signed in");
-                    startMainActivity();
+                    //startMainActivity();
                 } else {
                     //user is not signed in
                     Log.d(TAG, "user signed out");

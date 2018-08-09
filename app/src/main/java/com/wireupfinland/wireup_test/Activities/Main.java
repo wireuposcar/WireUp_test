@@ -8,9 +8,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -40,7 +42,8 @@ public class Main extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
 
-
+//TODO ta ner grupperna som användaren är med i
+    //TODO öppna chaten för den SPECIFIKA gruppen när man klickar på den i RecyclerView
 
 
     @Override
@@ -52,7 +55,7 @@ public class Main extends AppCompatActivity {
         mUser = mAuth.getCurrentUser();
 
         mDatabase = FirebaseDatabase.getInstance();
-        mDatabaseReference = mDatabase.getReference().child("groups");
+        mDatabaseReference = mDatabase.getReference().child("groups").child("android");
         mDatabaseReference.keepSynced(true);
 
         grouplist = new ArrayList<>();
