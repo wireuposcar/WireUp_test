@@ -84,15 +84,27 @@
                 />
 
 
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginEnd="0dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginTop="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/top_gradient" />
+
             <ListView
                 android:id="@+id/messageView"
                 android:layout_width="match_parent"
                 android:layout_height="463dp"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginTop="80dp"
                 android:divider="@android:color/transparent"
-                android:dividerHeight="16dp"
-                >
+                android:dividerHeight="16dp">
 
 
             </ListView>
