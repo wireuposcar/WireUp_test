@@ -4,21 +4,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -26,10 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.wireupfinland.wireup_test.DataService.PeopleToAddAdapter;
 import com.wireupfinland.wireup_test.R;
-import com.wireupfinland.wireup_test.Services.DataService;
 import com.wireupfinland.wireup_test.Services.PeopleToAdd;
 
 import java.util.ArrayList;
@@ -95,7 +89,7 @@ public class SetProject extends AppCompatActivity {
         listItems = new ArrayList<>();
 
         for(int i = 0; i<=10; i++) {
-            PeopleToAdd listItem = new PeopleToAdd("Test" + 1+1, "Test again");
+            PeopleToAdd listItem = new PeopleToAdd("Test" + i, "Test again");
             listItems.add(listItem);
         }
 
@@ -184,7 +178,20 @@ public class SetProject extends AppCompatActivity {
         final String endDt = endDate.getText().toString();
         final String members = addPeople.getText().toString();
 
-        if (!TextUtils.isEmpty(subj) && !TextUtils.isEmpty(projectNm) && !TextUtils.isEmpty(endDt) && !TextUtils.isEmpty(members)) {
+        if (TextUtils.isEmpty(subj) || TextUtils.isEmpty(projectNm) || TextUtils.isEmpty(endDt)) {
+
+            if (subj.isEmpty()){
+                Snackbar.make(findViewById(R.id.MyConstraintLayout), R.string.error_projecSubj,Snackbar.LENGTH_SHORT).show();
+            }
+            else if (projectNm.isEmpty()){
+                Snackbar.make(findViewById(R.id.MyConstraintLayout), R.string.error_projectName,Snackbar.LENGTH_SHORT).show();
+            }
+            else if (endDt.isEmpty()){
+                Snackbar.make(findViewById(R.id.MyConstraintLayout), R.string.error_projectDate,Snackbar.LENGTH_SHORT).show();
+             }
+
+            return;
+        }
             mProgressDialog.setMessage("Creating new project...");
             mProgressDialog.show();
 
@@ -206,29 +213,9 @@ public class SetProject extends AppCompatActivity {
 
             mProgressDialog.dismiss();
 
-            startActivity(new Intent(SetProject.this, Main.class));
+           startActivity(new Intent(SetProject.this, Main.class));
 
             //TODO dissable create account button and cleare all fields and enable button
-
-
-            //DataService dataService = new DataService(subj, projectNm, endDt, members, "", "", "", "", "");
-
-            //mPostDatabse.setValue(dataService).addOnSuccessListener(new OnSuccessListener<Void>() {
-               // @Override
-              //  public void onSuccess(Void aVoid) {
-                //    Toast.makeText(getApplicationContext(), "Group created", Toast.LENGTH_LONG).show();
-                //}
-            //});
-
-        }
-        startMainActivity();
-
-    }
-
-    public void startMainActivity(){
-        Intent main = new Intent(this, Main.class);
-        startActivity(main);
-        finish();
 
     }
 
