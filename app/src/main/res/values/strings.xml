@@ -12,4 +12,7 @@
     <string name="fullname">Full Name</string>
     <string name="school">Your School</string>
     <string name="schoolcode">School Code</string>
+    <string name="error_projectDate">Invalid end date</string>
+    <string name="error_projectName" >Invalid projectname</string>
+    <string name="error_projecSubj">Invalid Subject</string>
 </resources>

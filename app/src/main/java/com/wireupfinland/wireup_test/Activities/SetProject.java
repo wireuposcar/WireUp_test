@@ -4,21 +4,17 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -26,10 +22,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.wireupfinland.wireup_test.DataService.PeopleToAddAdapter;
 import com.wireupfinland.wireup_test.R;
-import com.wireupfinland.wireup_test.Services.DataService;
 import com.wireupfinland.wireup_test.Services.PeopleToAdd;
 
 import java.util.ArrayList;
@@ -94,19 +88,22 @@ public class SetProject extends AppCompatActivity {
 
         listItems = new ArrayList<>();
 
-        //for(int i = 0; i<=10; i++) {
-          //  PeopleToAdd listItem = new PeopleToAdd("Test" + 1+1, "Test again");
-            //listItems.add(listItem);
-        //}
-
+        for(int i = 0; i<=10; i++) {
+            PeopleToAdd listItem = new PeopleToAdd("Test" + i, "Test again");
+            listItems.add(listItem);
+        }
 
         adapter = new PeopleToAddAdapter(this, listItems);
 
         recyclerView.setAdapter(adapter);
 
 
+        //init();
+
+
+
+        //mPeopleToAdd = FirebaseDatabase.getInstance().getReference().child("users").child("Jakobstads Gymnasium");
         mPeopleToAdd = mDatabase.getReference().child("users").child("Jakobstads Gymnasium");
-        mPeopleToAdd.keepSynced(true);
 
 
 
@@ -115,8 +112,6 @@ public class SetProject extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 //showPeople(dataSnapshot);
 
-                PeopleToAdd peopleToAdd = dataSnapshot.getValue(PeopleToAdd.class);
-                adapter.notifyDataSetChanged();
             }
 
             @Override
@@ -154,12 +149,26 @@ public class SetProject extends AppCompatActivity {
 
 
 
+    private void init() {
+        //mPeopleAdded = (RecyclerView) findViewById(R.id.peopleSearchedForRecyclerView);
+        //mLayoutManager = new LinearLayoutManager(this);
+        //mPeopleAdded.setLayoutManager(mLayoutManager);
+    }
+
+
+
+
+
     private void showPeople(DataSnapshot dataSnapshot) {
         for (DataSnapshot ds: dataSnapshot.getChildren()) {
             PeopleToAdd addedPeople = new PeopleToAdd();
             addedPeople.setEmail(ds.getValue(PeopleToAdd.class).getEmail());
-            listItems.add(addedPeople);
 
+
+           //ArrayList<String> peopleAdded = new ArrayList<>();
+           //peopleAdded.add(addedPeople.getEmail());
+            //ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_expandable_list_item_2, peopleAdded);
+            //mListView.setAdapter(adapter);
         }
     }
 
@@ -169,7 +178,20 @@ public class SetProject extends AppCompatActivity {
         final String endDt = endDate.getText().toString();
         final String members = addPeople.getText().toString();
 
-        if (!TextUtils.isEmpty(subj) && !TextUtils.isEmpty(projectNm) && !TextUtils.isEmpty(endDt) && !TextUtils.isEmpty(members)) {
+        if (TextUtils.isEmpty(subj) || TextUtils.isEmpty(projectNm) || TextUtils.isEmpty(endDt)) {
+
+            if (subj.isEmpty()){
+                Snackbar.make(findViewById(R.id.MyConstraintLayout), R.string.error_projecSubj,Snackbar.LENGTH_SHORT).show();
+            }
+            else if (projectNm.isEmpty()){
+                Snackbar.make(findViewById(R.id.MyConstraintLayout), R.string.error_projectName,Snackbar.LENGTH_SHORT).show();
+            }
+            else if (endDt.isEmpty()){
+                Snackbar.make(findViewById(R.id.MyConstraintLayout), R.string.error_projectDate,Snackbar.LENGTH_SHORT).show();
+             }
+
+            return;
+        }
             mProgressDialog.setMessage("Creating new project...");
             mProgressDialog.show();
 
@@ -191,22 +213,9 @@ public class SetProject extends AppCompatActivity {
 
             mProgressDialog.dismiss();
 
-            startActivity(new Intent(SetProject.this, Main.class));
+           startActivity(new Intent(SetProject.this, Main.class));
 
             //TODO dissable create account button and cleare all fields and enable button
-
-
-
-
-        }
-        startMainActivity();
-
-    }
-
-    public void startMainActivity(){
-        Intent main = new Intent(this, Main.class);
-        startActivity(main);
-        finish();
 
     }
 

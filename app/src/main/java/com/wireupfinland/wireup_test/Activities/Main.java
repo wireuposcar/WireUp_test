@@ -68,6 +68,7 @@ public class Main extends AppCompatActivity {
         chat = (FloatingActionButton) findViewById(R.id.logoutBtn);
         startChat();
         startSetProject();
+
     }
 
 
@@ -86,7 +87,7 @@ public class Main extends AppCompatActivity {
     private void startDisplayProject() {
         project.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View view) {//deffo int fäädi
                 Intent intent = new Intent(getApplicationContext(), Project.class);
                 startActivity(intent);
                 finish();
@@ -95,11 +96,11 @@ public class Main extends AppCompatActivity {
     }
 
     private void startChat() {
-        //TODO: add chat according to requirements.
+
 
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v) {//fiddit mycki bugga kvar
                 Intent intent = new Intent(getApplicationContext(), Chat.class);
                 startActivity(intent);
                 finish();
@@ -110,10 +111,12 @@ public class Main extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        grouplist.clear();
 
-        mDatabaseReference.addChildEventListener(new ChildEventListener() {
+            mDatabaseReference.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
                 DataService groupData = dataSnapshot.getValue(DataService.class);
 
                 grouplist.add(groupData);
@@ -121,7 +124,9 @@ public class Main extends AppCompatActivity {
                 recyclerAdapter = new RecyclerAdapter(Main.this, grouplist);
                 recyclerView.setAdapter(recyclerAdapter);
                 recyclerAdapter.notifyDataSetChanged();
+
             }
+
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
