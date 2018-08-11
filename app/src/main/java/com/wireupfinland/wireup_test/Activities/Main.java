@@ -85,7 +85,7 @@ public class Main extends AppCompatActivity {
     }
 
     private void startDisplayProject() {
-        project.setOnClickListener(new View.OnClickListener() {
+        recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {//deffo int fäädi
                 Intent intent = new Intent(getApplicationContext(), Project.class);
@@ -130,11 +130,13 @@ public class Main extends AppCompatActivity {
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                recyclerAdapter.notifyDataSetChanged();
 
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                recyclerAdapter.notifyDataSetChanged();
 
             }
 

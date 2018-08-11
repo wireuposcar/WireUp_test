@@ -4,9 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -67,6 +69,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         public TextView subject;
         public TextView projectName;
+        public ImageButton deletebtn;
         //public TextView endDate;
         //public TextView peopleAdded;
         String userid;
@@ -82,6 +85,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             subject = (TextView) view.findViewById(R.id.projectSubject);
             projectName = (TextView) view.findViewById(R.id.projectName);
+            deletebtn = (ImageButton) view.findViewById(R.id.deleteBtn);
             //endDate = (TextView) view.findViewById(R.id.setEndDate);
             //peopleAdded = (TextView) view.findViewById(R.id.addPeople);
 
@@ -100,5 +104,4 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         }
     }
-
 }
