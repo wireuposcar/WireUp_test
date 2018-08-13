@@ -97,4 +97,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/top_gradient" />
+
+    <Button
+        android:id="@+id/chatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="42dp"
+        android:text="chat"
+        tools:layout_editor_absoluteX="323dp"
+        tools:layout_editor_absoluteY="6dp"
+        tools:ignore="MissingConstraints" />
+
 </android.support.constraint.ConstraintLayout>

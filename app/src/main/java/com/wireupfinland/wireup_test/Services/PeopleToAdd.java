@@ -4,6 +4,7 @@ public class PeopleToAdd {
     private String email;
     private String provider;
 
+
     public PeopleToAdd(String email, String provider) {
         this.email = email;
         this.provider = provider;
@@ -12,6 +13,7 @@ public class PeopleToAdd {
     public PeopleToAdd() {
 
     }
+
 
     public String getEmail() {
         return email;

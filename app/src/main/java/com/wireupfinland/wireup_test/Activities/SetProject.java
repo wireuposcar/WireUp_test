@@ -51,8 +51,10 @@ public class SetProject extends AppCompatActivity {
     private ArrayList<String> peopleAddedArrayList = new ArrayList<String>();
     private ArrayList<String> mKeys = new ArrayList<>();
 
+    private String projectId;
     private String mCurrentUserId;
     private TextView peopleAddedTxtView;
+
 
     private RecyclerView mPeopleAdded;
     private LinearLayoutManager mLayoutManager;
@@ -94,7 +96,6 @@ public class SetProject extends AppCompatActivity {
         }
 
         adapter = new PeopleToAddAdapter(this, listItems);
-
         recyclerView.setAdapter(adapter);
 
 

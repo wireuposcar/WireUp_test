@@ -108,7 +108,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.323"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addPeople" />
+        app:layout_constraintTop_toBottomOf="@+id/addPeople" >
+
+
+    </android.support.v7.widget.RecyclerView>
 
     <ImageView
         android:id="@+id/imageView7"

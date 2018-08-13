@@ -66,8 +66,10 @@ public class Main extends AppCompatActivity {
 
         newProject = (FloatingActionButton) findViewById(R.id.createNewProjectBtn);
         chat = (FloatingActionButton) findViewById(R.id.logoutBtn);
-        startChat();
+      //  startChat();
         startSetProject();
+        startDisplayProject();
+
 
     }
 
@@ -96,8 +98,6 @@ public class Main extends AppCompatActivity {
     }
 
     private void startChat() {
-
-
         chat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {//fiddit mycki bugga kvar
@@ -125,6 +125,7 @@ public class Main extends AppCompatActivity {
                 recyclerView.setAdapter(recyclerAdapter);
                 recyclerAdapter.notifyDataSetChanged();
 
+
             }
 
 
@@ -137,6 +138,9 @@ public class Main extends AppCompatActivity {
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                 recyclerAdapter.notifyDataSetChanged();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
 
             }
 
